@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SOMNA — 睡眠系统</title>
+<meta name="description" content="SOMNA 睡眠系统。一套安静、会学习的睡眠系统，垫在床垫之下，不被察觉地，读懂你的每一个夜晚。">
+<meta name="theme-color" content="#f2efe9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23191714'/%3E%3Cpath d='M5 18c3.5-5 7.5-7.5 11-7.5s7.5 2.5 11 7.5' fill='none' stroke='%23f2efe9' stroke-width='1.6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="fx" aria-hidden="true">
+  <div class="fx-grain"></div>
+  <div class="fx-scan"></div>
+  <div class="fx-vig"></div>
+  <div class="fx-veil"></div>
+  <div class="fx-red"></div>
+</div>
+<div id="flash" aria-hidden="true"></div>
+<div id="cursor" aria-hidden="true"><i></i></div>
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="SOMNA 首页">
+    <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.6" fill="none" stroke="currentColor" stroke-width=".9"/>
+      <path class="mark-lid" d="M8.5 21.4c4-5.6 7.9-8.4 11.5-8.4s7.5 2.8 11.5 8.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <path class="mark-lower" d="M6.6 21.6c4.6 5.4 9.1 8 13.4 8s8.8-2.6 13.4-8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0"/>
+      <circle class="mark-pupil" cx="20" cy="21.6" r="2.7" fill="currentColor" opacity="0"/>
+      <circle class="mark-iris" cx="20" cy="21.6" r="5.6" fill="none" stroke="currentColor" stroke-width=".8" opacity="0"/>
+    </svg>
+    <span class="brand-word">SOMNA</span>
+  </a>
+  <nav class="nav-links" aria-label="主导航">
+    <a href="#system" data-nav="1">睡眠</a>
+    <a href="#science" data-nav="2">科学</a>
+    <a href="#voices" data-nav="3">评价</a>
+    <a href="#pricing" data-nav="4">价格</a>
+  </nav>
+  <div class="nav-right">
+    <button class="icon-btn" id="soundBtn" aria-pressed="false" title="声音">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h3l4-3.4v12.8L7 15H4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path class="wave" d="M15 9.2c1.2 1.4 1.2 4.2 0 5.6M17.6 7c2.4 2.7 2.4 7.3 0 10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0"/><path class="mute" d="M15 9.5l4.5 5M19.5 9.5L15 14.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    </button>
+    <a href="#pricing" class="btn btn-sm" id="navCta">开始</a>
+  </div>
+</header>
+
+<main id="site">
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span>SOMNA SENSE 2 · 现已发售</p>
+        <h1 class="display" id="heroH1">睡觉，是你最不该<br><em>独自</em>做的事。</h1>
+        <p class="lede">一套安静、会学习的睡眠系统。薄如一张纸，垫在床垫之下——不被察觉地，读懂你的每一个夜晚。</p>
+        <div class="hero-cta">
+          <a href="#pricing" class="btn">开始睡得更好</a>
+          <a href="#system" class="ghost">观看影片<span class="mono">1:12</span></a>
+        </div>
+        <p class="fine" id="heroFine">30 夜试用 · 免费退换 · 不问原因</p>
+      </div>
+      <div class="hero-visual">
+        <div class="orb-frame" aria-hidden="true">
+          <div class="ticks"></div>
+          <div class="orb" id="orb">
+            <span class="orb-glow"></span>
+            <span class="orb-pupil" id="orbPupil"></span>
+          </div>
+          <div class="orb-halo"></div>
+        </div>
+        <div class="orb-caption"><span class="mono">THK 0.6 MM</span><span class="mono">SOMNA SENSE</span></div>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <span class="chapter">01 — 睡眠</span>
+      <span class="scrollcue">向下滚动<i></i></span>
+    </div>
+  </section>
+
+  <section class="press" aria-label="媒体报道">
+    <p class="press-label">媒体报道</p>
+    <div class="press-row">
+      <span>WYRD</span>
+      <span id="press2">夜 巡</span>
+      <span>安静时刻</span>
+      <span class="press-serif">Modern Dwelling</span>
+      <span>THE ATLAS</span>
+      <span id="press6">睡眠季刊</span>
+    </div>
+  </section>
+
+  <section class="system" id="system">
+    <div class="sec-head">
+      <p class="chapter">02 — 系统</p>
+      <h2 class="h2">你睡着的时候，<br>会发生三件事。</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-top"><span class="card-num">01</span>
+          <svg class="card-ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="4" fill="none" stroke="currentColor" stroke-width="1.1"/><circle cx="24" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".6"/><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".35"/><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".15"/></svg>
+        </div>
+        <h3>感知</h3>
+        <p id="feat1p">1,024 个压感点，以 0.02 毫米的精度读取你的呼吸、心率与翻身。不用佩戴，没有摄像头，身上什么都不用戴。</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="card-num">02</span>
+          <svg class="card-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 34c6-1 8-16 14-16s7 14 12 14 7-9 14-9" fill="none" stroke="currentColor" stroke-width="1.1"/><circle cx="18" cy="18" r="1.6" fill="currentColor"/><circle cx="30" cy="32" r="1.6" fill="currentColor"/><circle cx="40" cy="23" r="1.6" fill="currentColor"/></svg>
+        </div>
+        <h3 id="feat2h">学习</h3>
+        <p id="feat2p">每一夜，SOMNA 都在重建你的睡眠模型。到第四晚，它比你更了解你的作息。</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="card-num">03</span>
+          <svg class="card-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 24h32" stroke="currentColor" stroke-width="1.1"/><path d="M8 14h32M8 34h32" stroke="currentColor" stroke-width="1.1" opacity=".25"/><circle cx="31" cy="24" r="3.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M31 12v5M31 31v5" stroke="currentColor" stroke-width="1.1" opacity=".5"/></svg>
+        </div>
+        <h3>调节</h3>
+        <p id="feat3p">房间会在你醒来之前作出回应——温度、光线、声音。你永远不会察觉到它发生过。</p>
+      </article>
+    </div>
+    <p class="system-note" id="sysNote">SOMNA 不发光，也不发声。按设计，它不被察觉。</p>
+  </section>
+
+  <section class="product" id="product">
+    <div class="product-inner">
+      <div class="product-copy">
+        <p class="chapter on-dark">03 — 硬件</p>
+        <h2 class="h2 on-dark">它铺在床单下面。<br>然后就消失了。</h2>
+        <p class="product-lede">厚度不到一毫米。没有屏幕，没有灯，没有声音。你不会想起它——这正是它工作的方式。</p>
+        <p class="prod-line" id="prodCopy">不需要充电，不需要配对，也没有开关。</p>
+      </div>
+      <div class="device" aria-hidden="true">
+        <div class="device-disc"><span class="device-inner"></span></div>
+        <div class="device-shadow"></div>
+        <dl class="specs">
+          <div><dt>厚度</dt><dd>0.6 mm</dd></div>
+          <div><dt>压感点</dt><dd>1,024</dd></div>
+          <div><dt>续航</dt><dd>18 个月</dd></div>
+          <div><dt>连接</dt><dd>被动式 · 始终在线</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="数据">
+    <div class="stats-grid">
+      <div class="stat">
+        <p class="stat-num"><span id="stat1" data-to="410">410</span><small>万</small></p>
+        <p class="stat-lab" id="stat1lab">个夜晚被监测</p>
+      </div>
+      <div class="stat">
+        <p class="stat-num"><span id="stat2" data-to="94">94</span><small>%</small></p>
+        <p class="stat-lab" id="stat2lab">的用户睡得更沉</p>
+      </div>
+      <div class="stat">
+        <p class="stat-num"><span id="stat3" data-to="31">31</span><small>分</small></p>
+        <p class="stat-lab" id="stat3lab">平均入睡时间缩短</p>
+      </div>
+      <div class="stat">
+        <p class="stat-num"><span id="stat4">4.9</span><small>/5</small></p>
+        <p class="stat-lab" id="stat4lab">12,400 条评价</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="voices" id="voices">
+    <div class="sec-head">
+      <p class="chapter">04 — 用户</p>
+      <h2 class="h2" id="voiceH2">他们现在睡得不一样了。</h2>
+    </div>
+    <div class="voice-grid">
+      <figure class="voice">
+        <div class="avatar" style="--av:#ded5c6">
+          <svg viewBox="13 6 74 86" aria-hidden="true">
+            <circle cx="50" cy="50" r="50" fill="var(--av)"/>
+            <path d="M50 60c-17 0-29 13-31 34h62c-2-21-14-34-31-34z" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <ellipse cx="50" cy="42" rx="16.5" ry="20" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <path d="M33 41c0-15 7-22 17-22s17 7 17 22c0-7-6-11-17-11s-17 4-17 11z" fill="#191714" fill-opacity=".55"/>
+            <path class="eye-closed" d="M41.5 44c1.6 1.3 3.2 1.3 4.8 0M53.7 44c1.6 1.3 3.2 1.3 4.8 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".7"/>
+            <ellipse class="eye-open" cx="44" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <ellipse class="eye-open" cx="56" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <path class="mouth" d="M45 56c2 1 8 1 10 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".55"/>
+          </svg>
+        </div>
+        <blockquote id="q1">“一周之内，我就不再凌晨三点醒来了。我不知道它是怎么做到的，我已经不再问了。”</blockquote>
+        <figcaption><b id="n1">玛拉·V</b><span>里斯本 · 2024 年起使用</span></figcaption>
+      </figure>
+      <figure class="voice">
+        <div class="avatar" style="--av:#cfd2c4">
+          <svg viewBox="13 6 74 86" aria-hidden="true">
+            <circle cx="50" cy="50" r="50" fill="var(--av)"/>
+            <path d="M50 60c-17 0-29 13-31 34h62c-2-21-14-34-31-34z" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <ellipse cx="50" cy="42" rx="16.5" ry="20" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <path d="M33 42c-1-16 6-24 17-24s18 8 17 24c-2-9-8-13-17-13s-15 4-17 13z" fill="#191714" fill-opacity=".55"/>
+            <path class="eye-closed" d="M41.5 44c1.6 1.3 3.2 1.3 4.8 0M53.7 44c1.6 1.3 3.2 1.3 4.8 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".7"/>
+            <ellipse class="eye-open" cx="44" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <ellipse class="eye-open" cx="56" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <path class="mouth" d="M45 56c2 1 8 1 10 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".55"/>
+          </svg>
+        </div>
+        <blockquote id="q2">“我妻子说我睡着以后，一动也不动。二十年来睡得最好的一觉。”</blockquote>
+        <figcaption><b id="n2">丹尼尔·R</b><span>利兹 · 2025 年起使用</span></figcaption>
+      </figure>
+      <figure class="voice">
+        <div class="avatar" style="--av:#d8cfc9">
+          <svg viewBox="13 6 74 86" aria-hidden="true">
+            <circle cx="50" cy="50" r="50" fill="var(--av)"/>
+            <path d="M50 60c-17 0-29 13-31 34h62c-2-21-14-34-31-34z" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <ellipse cx="50" cy="42" rx="16.5" ry="20" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <path d="M31 45c0-18 8-26 19-26s19 8 19 26c0 8-3 14-6 17 1-9-2-15-13-15s-14 6-13 15c-3-3-6-9-6-17z" fill="#191714" fill-opacity=".55"/>
+            <path class="eye-closed" d="M41.5 44c1.6 1.3 3.2 1.3 4.8 0M53.7 44c1.6 1.3 3.2 1.3 4.8 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".7"/>
+            <ellipse class="eye-open" cx="44" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <ellipse class="eye-open" cx="56" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <path class="mouth" d="M45 56c2 1 8 1 10 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".55"/>
+          </svg>
+        </div>
+        <blockquote id="q3">“它是我家里唯一一件我从不需要想起的东西。”</blockquote>
+        <figcaption><b id="n3">普里娅·N</b><span>多伦多 · 2024 年起使用</span></figcaption>
+      </figure>
+      <figure class="voice">
+        <div class="avatar" style="--av:#c9c6bb">
+          <svg viewBox="13 6 74 86" aria-hidden="true">
+            <circle cx="50" cy="50" r="50" fill="var(--av)"/>
+            <path d="M50 60c-17 0-29 13-31 34h62c-2-21-14-34-31-34z" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <ellipse cx="50" cy="42" rx="16.5" ry="20" fill="none" stroke="#191714" stroke-width="1.1" stroke-opacity=".55"/>
+            <path d="M34 38c2-13 8-18 16-18s14 5 16 18c-4-6-9-9-16-9s-12 3-16 9z" fill="#191714" fill-opacity=".55"/>
+            <path class="eye-closed" d="M41.5 44c1.6 1.3 3.2 1.3 4.8 0M53.7 44c1.6 1.3 3.2 1.3 4.8 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".7"/>
+            <ellipse class="eye-open" cx="44" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <ellipse class="eye-open" cx="56" cy="44" rx="2.6" ry="2.1" fill="#191714" opacity="0"/>
+            <path class="mouth" d="M45 56c2 1 8 1 10 0" fill="none" stroke="#191714" stroke-width="1.2" stroke-opacity=".55"/>
+          </svg>
+        </div>
+        <blockquote id="q4">“值得每一分钱。现在我的梦安静多了。”</blockquote>
+        <figcaption><b id="n4">汤姆·H</b><span>墨尔本 · 2023 年起使用</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="science" id="science">
+    <div class="sci-grid">
+      <div class="sci-copy">
+        <p class="chapter">05 — 科学</p>
+        <h2 class="h2">一夜，被测量。</h2>
+        <p class="lede-s">SOMNA 在 1.9 亿小时的睡眠数据上训练。它能在 40 毫秒内判断你进入 REM 的瞬间——快到可以在不惊醒你的情况下作出回应。</p>
+        <p class="lede-s small" id="sciP">你不需要做任何事。你只需要睡着。</p>
+      </div>
+      <div class="chart" id="chart">
+        <div class="chart-head"><span class="mono">SLEEP ARCHITECTURE</span><span class="mono" id="chartDate">03 — 11 — 2026</span></div>
+        <div class="chart-body">
+          <div class="chart-y" aria-hidden="true"><span>清醒</span><span>REM</span><span>浅睡</span><span>深睡</span></div>
+          <svg id="chartSvg" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
+            <g class="chart-grid">
+              <line x1="0" y1="30" x2="1000" y2="30"/><line x1="0" y1="90" x2="1000" y2="90"/>
+              <line x1="0" y1="150" x2="1000" y2="150"/><line x1="0" y1="210" x2="1000" y2="210"/>
+              <line x1="200" y1="0" x2="200" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/>
+              <line x1="600" y1="0" x2="600" y2="240"/><line x1="800" y1="0" x2="800" y2="240"/>
+            </g>
+            <path id="chartPath" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path id="chartGhost" fill="none" stroke="#7d1418" stroke-width="2" stroke-linejoin="round" opacity="0"/>
+            <line id="chartNow" x1="978" y1="0" x2="978" y2="240" stroke="#7d1418" stroke-width="1" opacity="0"/>
+          </svg>
+        </div>
+        <div class="chart-x" aria-hidden="true"><span>23:00</span><span>01:00</span><span>03:00</span><span>05:00</span><span id="chartEnd">07:00</span></div>
+        <p class="chart-note" id="chartNote">↑ 你在这里</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="sec-head center">
+      <p class="chapter">06 — 价格</p>
+      <h2 class="h2">一套系统。一次付款。</h2>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <p class="plan-name">SOMNA SENSE 2</p>
+        <p class="plan-price"><span class="cur">¥</span><span class="amt" data-price="1899">1,899</span></p>
+        <p class="plan-desc">一张床。一个人。一整夜。</p>
+        <ul>
+          <li>0.6 mm 压感层</li>
+          <li>单夜睡眠报告</li>
+          <li>30 夜试用</li>
+        </ul>
+        <a class="btn btn-line" href="#top" data-buy>加入购物车</a>
+      </article>
+      <article class="plan plan-hero">
+        <p class="plan-tag">最多人选择</p>
+        <p class="plan-name">SOMNA COMPLETE</p>
+        <p class="plan-price"><span class="cur">¥</span><span class="amt" data-price="4499">4,499</span></p>
+        <p class="plan-desc">整间卧室，交给它。</p>
+        <ul>
+          <li>Sense 2 + 自适应温控</li>
+          <li>实时夜间调节</li>
+          <li>专属睡眠顾问</li>
+          <li>30 夜试用</li>
+        </ul>
+        <a class="btn" href="#top" data-buy>加入购物车</a>
+      </article>
+      <article class="plan">
+        <p class="plan-name">SOMNA HOME</p>
+        <p class="plan-price"><span class="cur">¥</span><span class="amt" data-price="9899">9,899</span></p>
+        <p class="plan-desc">每一个房间。每一个人。</p>
+        <ul>
+          <li>全屋 6 套 Sense 2</li>
+          <li>多人独立报告</li>
+          <li>门与窗的夜间监测</li>
+          <li>30 夜试用</li>
+        </ul>
+        <a class="btn btn-line" href="#top" data-buy>加入购物车</a>
+      </article>
+    </div>
+    <p class="plan-note" id="planNote">30 夜试用。不合适，全额退款，不问原因。</p>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="faq-grid">
+      <div class="faq-head">
+        <p class="chapter">07 — 常见问题</p>
+        <h2 class="h2 small-h">你可能还想知道。</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>不用 Wi-Fi 也能用吗？<i></i></summary>
+          <p>可以。SOMNA 在本地完成全部计算，只有在你同意时才会同步摘要。它从不录音。</p>
+        </details>
+        <details>
+          <summary>会打扰我的伴侣吗？<i></i></summary>
+          <p>不会。它不发光，也不发声。两位使用者会得到两份独立的报告。</p>
+        </details>
+        <details>
+          <summary>我的数据安全吗？<i></i></summary>
+          <p>所有数据都经过端到端加密。我们不销售数据，也不与第三方共享。你可以随时删除全部历史记录。</p>
+        </details>
+        <details id="faqLast">
+          <summary id="faqQ">可以退货吗？<i></i></summary>
+          <p id="faqA">可以。30 夜内，不问原因。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <p class="chapter center">08 — 今晚</p>
+    <h2 class="h2 giant">今晚，可能是这些年来<br>第一次好觉。</h2>
+    <a class="btn btn-lg" href="#pricing">开始</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="brand-word">SOMNA</span>
+      <p>为独自入睡的人而做。</p>
+    </div>
+    <div class="foot-col">
+      <p class="foot-h">产品</p>
+      <a href="#system">SOMNA Sense 2</a>
+      <a href="#system">SOMNA Complete</a>
+      <a href="#pricing">价格</a>
+    </div>
+    <div class="foot-col">
+      <p class="foot-h">公司</p>
+      <a href="#science">科学</a>
+      <a href="#voices">用户</a>
+      <a href="#faq">支持</a>
+    </div>
+    <div class="foot-col">
+      <p class="foot-h">地址</p>
+      <p class="foot-p">14 Halloway Street<br>Edinburgh, EH3 9QN<br>United Kingdom</p>
+    </div>
+    <div class="session" id="session" aria-label="会话信息">
+      <p class="session-h"><span class="live-dot"></span>会话 · SESSION</p>
+      <dl>
+        <div><dt>已停留</dt><dd id="sTime">00:00</dd></div>
+        <div><dt>本地时间</dt><dd id="sClock">--:--</dd></div>
+        <div><dt>时区</dt><dd id="sTz">--</dd></div>
+        <div><dt>屏幕</dt><dd id="sRes">--</dd></div>
+        <div><dt>设备</dt><dd id="sDev">--</dd></div>
+        <div><dt>连接</dt><dd id="sLink">已连接</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 <span id="copyName">Somna Labs, Inc.</span></span>
+    <span class="foot-legal">条款 · 隐私 · 无障碍</span>
+    <span class="foot-quiet" id="footQuiet">SOMNA 不对你闭上眼之后发生的事负责。</span>
+  </div>
+</footer>
+
+<section id="descent" aria-label="夜间模式">
+  <div class="stage">
+    <canvas id="scene"></canvas>
+    <div class="stage-ui" aria-hidden="true">
+      <div class="hud hud-tl"><span class="live-dot"></span><span id="hudMode">SOMNA · 夜间模式</span></div>
+      <div class="hud hud-tr"><span id="hudTimer">00:00:00</span></div>
+      <div class="hud hud-bl" id="hudHint">向下滚动</div>
+      <div class="hud hud-br"><span id="hudRec">REC</span></div>
+    </div>
+    <div class="beats" aria-hidden="true">
+      <article class="beat" data-in="0.00" data-out="0.10">
+        <p class="beat-k">夜间模式</p>
+        <p class="beat-big mono">03:00</p>
+        <p class="beat-sub">房子很安静。</p>
+      </article>
+      <article class="beat" data-in="0.10" data-out="0.20">
+        <p class="beat-k">03:04</p>
+        <p class="beat-big">一切都还在<br>原来的位置。</p>
+        <p class="beat-sub">除了那扇门。</p>
+      </article>
+      <article class="beat" data-in="0.20" data-out="0.33">
+        <p class="beat-k">03:07</p>
+        <p class="beat-big">SOMNA 还在听。</p>
+        <p class="beat-sub">本次会话已持续 <span class="live-session" id="beatTimer">00:00</span>。</p>
+      </article>
+      <article class="beat" data-in="0.33" data-out="0.45">
+        <p class="beat-k">03:11</p>
+        <p class="beat-big">这栋房子里，<br>有一个人。</p>
+        <p class="beat-sub">正在睡觉。</p>
+      </article>
+      <article class="beat" data-in="0.45" data-out="0.55">
+        <p class="beat-k">03:11</p>
+        <p class="beat-big shiver">有两个人。</p>
+        <p class="beat-sub">其中一个刚刚醒来。</p>
+      </article>
+      <article class="beat" data-in="0.55" data-out="0.66">
+        <p class="beat-k">03:12</p>
+        <p class="beat-big">继续往下滚。</p>
+        <p class="beat-sub">它知道屏幕在哪里结束。</p>
+      </article>
+      <article class="beat" data-in="0.66" data-out="0.76">
+        <p class="beat-k">—</p>
+        <p class="beat-big big-shiver">不要停。</p>
+        <p class="beat-sub">停下来，它就会看见你。</p>
+      </article>
+      <article class="beat" data-in="0.76" data-out="0.855">
+        <p class="beat-k">—</p>
+        <p class="beat-big">你听见了吗。</p>
+        <p class="beat-sub">那是你的呼吸。不是它的。</p>
+      </article>
+      <article class="beat" data-in="0.855" data-out="0.925">
+        <p class="beat-k">—</p>
+        <p class="beat-big big-shiver">别回头。</p>
+      </article>
+    </div>
+    <div class="lunge-title" id="lungeTitle" aria-hidden="true">看着它。</div>
+  </div>
+</section>
+
+<div id="after" aria-hidden="true">
+  <div class="after-inner">
+    <p class="after-line" id="al1">你还在。</p>
+    <p class="after-line" id="al2">它也是。</p>
+    <p class="after-line after-tag" id="al3">睡觉，是你最不该独自做的事。</p>
+    <p class="after-meta" id="al4"></p>
+    <div class="after-actions">
+      <button class="btn btn-line on-dark" id="restartBtn">重新开始</button>
+      <button class="ghost ghost-dark" id="wakeBtn">离开</button>
+    </div>
+  </div>
+</div>
+
+<div id="gate" role="region" aria-label="声音">
+  <button id="gateBtn">
+    <span class="gate-dot"></span>
+    <span class="gate-txt">声音已关闭 · 建议戴耳机</span>
+    <span class="gate-on">开启</span>
+  </button>
+  <button id="gateNo" aria-label="保持静音">保持静音</button>
+</div>
+
+<div id="dialog" role="dialog" aria-labelledby="dlgTitle" aria-live="polite">
+  <div class="dlg-bar"><span>SOMNA SENSE</span><span class="dlg-dash">—</span></div>
+  <div class="dlg-body">
+    <h3 id="dlgTitle">发现设备</h3>
+    <p id="dlgText">在你的卧室中检测到一台 SOMNA SENSE。<br>最后同步：就在刚才。</p>
+    <div class="dlg-actions" id="dlgActions">
+      <button class="dlg-ok" id="dlgOk">连接</button>
+      <button class="dlg-no" id="dlgNo">稍后</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<button id="bail" title="退出体验（Esc）">退出<span>ESC</span></button>
+
+<script src="main.js"></script>
+</body>
+</html>
